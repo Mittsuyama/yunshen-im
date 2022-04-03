@@ -1,8 +1,9 @@
 import { lazy } from 'solid-js';
 import type { RouteDefinition } from 'solid-app-router';
-
-import Home from './pages/home';
-import AboutData from './pages/about.data';
+import { Home } from '@/pages/home';
+import { Login } from '@/pages/login';
+import { QrCodePage } from '@/pages/login/qrCodePage';
+import { LoginWithPassword } from '@/pages/login/loginWithPassword';
 
 export const routes: RouteDefinition[] = [
   {
@@ -10,9 +11,12 @@ export const routes: RouteDefinition[] = [
     component: Home,
   },
   {
-    path: '/about',
-    component: lazy(() => import('./pages/about')),
-    data: AboutData,
+    path: '/login',
+    component: LoginWithPassword,
+  },
+  {
+    path: '/qrCode',
+    component: QrCodePage,
   },
   {
     path: '**',

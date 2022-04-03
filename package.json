@@ -16,7 +16,8 @@
     "node": ">=14.17.0"
   },
   "dependencies": {
-    "electron-store": "^8.0.1"
+    "electron-store": "^8.0.1",
+    "oicq": "^2.2.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.39",

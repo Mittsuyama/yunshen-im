@@ -1,7 +1,8 @@
+import './utils/store';
+import './utils/oicq';
 import { app, BrowserWindow, shell } from 'electron'
 import { release } from 'os'
 import { join } from 'path'
-import './samples/electron-store'
 
 // Disable GPU Acceleration for Windows 7
 if (release().startsWith('6.1')) app.disableHardwareAcceleration()
@@ -18,6 +19,9 @@ let win: BrowserWindow | null = null
 
 async function createWindow() {
   win = new BrowserWindow({
+    width: 1800,
+    height: 750,
+    autoHideMenuBar: true,
     title: 'Main window',
     webPreferences: {
       preload: join(__dirname, '../preload/index.cjs')

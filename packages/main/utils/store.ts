@@ -7,13 +7,13 @@ import Store from 'electron-store'
 /**
  * Expose 'electron-store' to Renderer-process through 'ipcMain.handle'
  */
-const store = new Store()
+export const store = new Store() as any;
 ipcMain.handle(
   'electron-store',
   async (_evnet, methodSign: string, ...args: any[]) => {
-    if (typeof (store as any)[methodSign] === 'function') {
-      return (store as any)[methodSign](...args)
+    if (typeof store[methodSign] === 'function') {
+      return store[methodSign](...args)
     }
-    return (store as any)[methodSign]
+    return store[methodSign]
   }
 )
