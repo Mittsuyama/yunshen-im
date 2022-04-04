@@ -24,7 +24,7 @@ const fetchLoginStatus = () => {
       res(false);
     }, 5000);
 
-    client.on('system.online', handler)
+    client.on('system.online', handler);
   });
 };
 
@@ -60,12 +60,13 @@ const fetchQrCode = async () => {
 
 const loginWithPassword = async (params: { uid: string, password: string, hashed?: boolean }) => {
   const { uid, password, hashed } = params;
-  if (!client) {
-    client = createClient(Number(uid));
-  }
+
+  client = createClient(Number(uid));
+
   const md5 = crypto.createHash('md5');
   const hashedPassword = hashed ? password : md5.update(password).digest('hex');
 
+  store.set('uid', uid);
   store.set('password', hashedPassword);
 
   const buffer = Buffer.from(hashedPassword, 'hex');
@@ -73,8 +74,8 @@ const loginWithPassword = async (params: { uid: string, password: string, hashed
 
   const sliderHandler = (e: any) => {
     const veriWin = new BrowserWindow({
-      height: 800,
       width: 600,
+      height: 400,
       autoHideMenuBar: true,
       webPreferences: {
         nativeWindowOpen: true,
@@ -98,7 +99,7 @@ const loginWithPassword = async (params: { uid: string, password: string, hashed
     });
   };
 
-  client!.on('system.login.slider', sliderHandler);
+  client.on('system.login.slider', sliderHandler);
   
   return true;
 };

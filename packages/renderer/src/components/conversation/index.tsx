@@ -1,4 +1,4 @@
-export const Conv = () => {
+export const Conversation = () => {
   return (
     <div>
       conv

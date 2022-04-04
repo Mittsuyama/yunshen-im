@@ -1,7 +1,6 @@
 import { lazy } from 'solid-js';
 import type { RouteDefinition } from 'solid-app-router';
 import { Home } from '@/pages/home';
-import { Login } from '@/pages/login';
 import { QrCodePage } from '@/pages/login/qrCodePage';
 import { LoginWithPassword } from '@/pages/login/loginWithPassword';
 

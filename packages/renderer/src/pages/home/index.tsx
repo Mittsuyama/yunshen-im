@@ -2,7 +2,7 @@ import { createSignal, onMount } from 'solid-js';
 import { useNavigate } from 'solid-app-router';
 import { fetchLoginStatus, tryLoginWithCachedData } from '@/api';
 import { useGlobalStore } from '@/data/useGlobalStore';
-import { Conv } from './conv';
+import { Conversation } from '@/components/conversation';
 import { Nav } from './nav';
 
 export const Home = () => {
@@ -39,7 +39,7 @@ export const Home = () => {
             <Nav />
           </div>
           <div class="flex-1">
-            <Conv />
+            <Conversation />
           </div>
         </>
       )}

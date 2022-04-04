@@ -12,6 +12,13 @@ export const setStoredUid = async ({ uid }: { uid: string }) => {
   await store.set('uid', uid);
 };
 
+export const clearUidAndPassword = async () => {
+  await Promise.all([
+    store.set('uid', ''),
+    store.set('password', ''),
+  ]);
+};
+
 export const fetchLoginStatus = async () => {
   return await oicq.send('fetchLoginStatus');
 };

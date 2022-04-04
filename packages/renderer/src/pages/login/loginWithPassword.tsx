@@ -53,6 +53,7 @@ export const LoginWithPassword = () => {
   createEffect(() => {
     const interval = window.setInterval(async () => {
       const res = await fetchLoginStatus();
+      console.log('res', res);
       if (res) {
         setGlobalStore({ isLogin: true });
         navigate('/');
@@ -78,14 +79,14 @@ export const LoginWithPassword = () => {
     <div class="w-full h-full flex justify-center items-center">
       <div class="w-96">
         <div class="font-bold text-lg">Your Account</div>
-        <div class="text-gray-300 mt-4 text-m">Please enter your ID and Password.</div>
+        <div class="mt-4 text-secondary-400 text-m">Please enter your ID and Password.</div>
 
         {/** id input */}
         <div class="w-full flex items-end">
           <div class="flex-none w-24">ID</div>
           <div class={`
             w-full h-10 p-1 mt-6 duration-300 border-b-2 relative flex
-            ${inputError() ? 'border-b-red-500' : isFocus() ? 'border-b-gray-600' : 'border-b-gray-200'}
+            ${inputError() ? 'border-b-red-500' : isFocus() ? 'border-secondary-400' : 'border-b-secondary-200'}
           `}>
             <input
               name="id"
@@ -109,7 +110,7 @@ export const LoginWithPassword = () => {
           <div class="flex-none w-24">Password</div>
           <div class={`
             w-full h-10 p-1 mt-6 duration-300 border-b-2 relative flex
-            ${isPasswordFocus() ? 'border-b-gray-600' : 'border-b-gray-200'}
+            ${isPasswordFocus() ? 'border-b-secondary-400' : 'border-b-secondary-200'}
           `}>
             <input
               name="id"
@@ -133,7 +134,7 @@ export const LoginWithPassword = () => {
         {/* submit button */}
         <button
           onClick={() => handleSubmit()}
-          class="text-white w-full py-4 rounded-sm text-lg mt-10 bg-primary-500 hover:bg-primary-600 duration-300"
+          class="w-full py-4 rounded-sm text-lg mt-10 bg-primary-500 hover:bg-primary-600 duration-300 text-secondary-50"
         >
           LOGIN
         </button>
