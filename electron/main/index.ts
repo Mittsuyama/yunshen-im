@@ -24,7 +24,7 @@ export const ROOT_PATH = {
 
 let win: BrowserWindow | null = null
 // Here, you can also use other preload
-const preload = join(__dirname, '../preload/index.js')
+// const preload = join(__dirname, '../preload/index.js')
 // 🚧 Use ['ENV_NAME'] avoid vite:define plugin
 const url = process.env.VITE_DEV_SERVER_URL as string;
 const indexHtml = join(ROOT_PATH.dist, 'index.html')
@@ -33,8 +33,10 @@ async function createWindow() {
   win = new BrowserWindow({
     title: 'Main window',
     icon: join(ROOT_PATH.public, 'favicon.svg'),
+    width: 1800,
+    height: 768,
     webPreferences: {
-      preload,
+      // preload,
       nodeIntegration: true,
       contextIsolation: false,
     },
@@ -57,6 +59,8 @@ async function createWindow() {
     if (url.startsWith('https:')) shell.openExternal(url)
     return { action: 'deny' }
   })
+
+  win.webContents.openDevTools();
 }
 
 app.whenReady().then(createWindow)
@@ -87,7 +91,7 @@ app.on('activate', () => {
 ipcMain.handle('open-win', (event, arg) => {
   const childWindow = new BrowserWindow({
     webPreferences: {
-      preload,
+      // preload,
     },
   })
 
